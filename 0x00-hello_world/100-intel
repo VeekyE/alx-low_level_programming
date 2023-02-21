@@ -1,6 +1,5 @@
 #1/bin/bash
-gcc -S -masm=intel $CFILE -o
-
+gcc -S -masm=intel $CFILE 
 
 
 

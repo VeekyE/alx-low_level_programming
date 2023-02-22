@@ -2,8 +2,11 @@
 
 /**
  * _islower - function to print lower case
+ *
  * 0c: parameter to be printed
- * Return: 1 if it is a lower case and 0 otherwise
+ *
+ * Return: 1 if it is a lower case
+ *  and 0 otherwise
  */
 
 int _islower(int c)

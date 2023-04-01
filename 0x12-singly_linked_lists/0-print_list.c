@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "lists.h"
-
+#include <stdlib.h>
+#include <string.h>
 /**
  * print_list - prints all the elemnet of a linked list
  * @h: pointer list_t list to print

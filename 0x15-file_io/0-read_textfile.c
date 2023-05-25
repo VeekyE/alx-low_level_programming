@@ -1,36 +1,29 @@
+#include <unistd.h>
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * read_textfile - reads a text file and prints the letters
- * @filename: filename.
- * @letters: numbers of letters printed.
- *
- * Return: numbers of letters printed. It fails, returns 0.
+ * read_textfile - Read a text file and print it
+ * @filename: textfile that is read
+ * @letters: number of letters being read and print
+ * Return: amount of bytes and 0 when function fails
  */
+
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int fd;
-	ssize_t nrd, nwr;
-	char *buf;
-
-	if (!filename)
-		return (0);
+	char *buffer;
+	ssize_t fd;
+	ssize_t w;
+	ssize_t t;
 
 	fd = open(filename, O_RDONLY);
-
 	if (fd == -1)
 		return (0);
+	buffer = malloc(sizeof(char) * letters);
+	t = read(fd, buffer, letters);
+	w = write(STDOUT_FILENO, buffer, t);
 
-	buf = malloc(sizeof(char) * (letters));
-	if (!buf)
-		return (0);
-
-	nrd = read(fd, buf, letters);
-	nwr = write(STDOUT_FILENO, buf, nrd);
-
+	free(buffer);
 	close(fd);
-
-	free(buf);
-
-	return (nwr);
+	return (w);
 }
